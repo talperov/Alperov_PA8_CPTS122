@@ -7,10 +7,13 @@ decision making of BigO which is time complexity. There will be several classes 
 playing a role and some new returns such as virtual. Overall should be pretty lightwork to complete
 based off the previous assingments and experience that we have built in our hands.
 */
+#include "DataAnalysis.h"
 
 int main(void)
 {
+	DataAnalysis obj;
 
+	obj.runAnalysis(); 
 
 	return 0;
 }

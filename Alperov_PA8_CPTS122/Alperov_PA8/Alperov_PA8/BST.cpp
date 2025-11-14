@@ -15,19 +15,22 @@ void BST::insert(Node*& pT, TransactionNode* newNode)
 	if (pT == nullptr)
 	{
 		pT = newNode;
+		return;
+	}
+
+	TransactionNode* pCur = dynamic_cast<TransactionNode*>(pT);
+	if (!pCur)
+	{
+		return;
+	}
+
+	if (newNode->getUnits() < pCur->getUnits())
+	{
+		insert(pT->getLeft(), newNode);
 	}
 	else
 	{
-		TransactionNode* pCur = dynamic_cast<TransactionNode*>(pT);
-
-		if (newNode->getUnits() < pCur->getUnits())
-		{
-			insert(pT->getLeft(), newNode);
-		}
-		else if (newNode->getUnits() > pCur->getUnits())
-		{
-			insert(pT->getRight(), newNode);
-		}
+		insert(pT->getRight(), newNode);
 	}
 }
 
@@ -50,16 +53,13 @@ void BST::inOrderTraversal(Node* pT)
 
 TransactionNode& BST::findSmallest(Node*& pT)
 {
+
 	if (pT->getLeft() == nullptr)
 	{
 		TransactionNode* pCur = dynamic_cast<TransactionNode*>(pT);
-		
 		return *pCur;
 	}
-	else
-	{
-		return findSmallest(pT->getLeft());
-	}
+	return findSmallest(pT->getLeft());
 }
 
 TransactionNode& BST::findLargest(Node*& pT)
@@ -67,13 +67,9 @@ TransactionNode& BST::findLargest(Node*& pT)
 	if (pT->getRight() == nullptr)
 	{
 		TransactionNode* pCur = dynamic_cast<TransactionNode*>(pT);
-
 		return *pCur;
 	}
-	else
-	{
-		return findLargest(pT->getRight());
-	}
+	return findLargest(pT->getRight());
 }
 
 BST::BST()

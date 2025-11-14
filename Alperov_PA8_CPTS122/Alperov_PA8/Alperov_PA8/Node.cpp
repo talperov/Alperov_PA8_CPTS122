@@ -9,7 +9,7 @@ Node::Node(string newData)
 
 Node::~Node()
 {
-	cout << "Destructor Activated" << endl;
+	//cout << "Destructor Activated" << endl; //Remember to delete this
 }
 
 string Node::getData() const

@@ -7,7 +7,7 @@ TransactionNode::TransactionNode(string newData, int newUnits) : Node(newData)
 
 TransactionNode::~TransactionNode()
 {
-	cout << "Destructor Activated" << endl; //Remember to delete this
+	//cout << "Destructor Activated" << endl; //Remember to delete this
 }
 
 int TransactionNode::getUnits() const
